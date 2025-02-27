@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Docker_Good": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
