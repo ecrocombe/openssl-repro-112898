@@ -2,9 +2,11 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/runtime:9.0@sha256:f50efa2ae5fdb6c100d691b599dae5b1265520371bf79850ec46cf43cd73810d AS base
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends openssl
+
 USER $APP_UID
 WORKDIR /app
-
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build

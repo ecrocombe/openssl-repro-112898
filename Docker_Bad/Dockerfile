@@ -2,9 +2,12 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/runtime:9.0-alpine@sha256:d5557c9bf579701537a3790a2a0f549e6356a7352e1430717c3e233de1e66173 AS base
+USER root
+RUN apk upgrade --update-cache --available \
+    && apk add openssl
+
 USER $APP_UID
 WORKDIR /app
-
 
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
